@@ -63,13 +63,14 @@ const App = () => {
         },
         (error) => {
           console.error('Error getting location:', error);
-          setError('Unable to get your location. Please enable location services and refresh the page.');
-          setLoading(false);
+          // Fallback to default location (Tokyo) to show weather data
+          setError('Unable to get your location. Showing weather for Tokyo as default.');
+          fetchWeather(35.6762, 139.6503); // Tokyo coordinates
         }
       );
     } else {
-      setError('Geolocation is not supported by this browser.');
-      setLoading(false);
+      setError('Geolocation is not supported by this browser. Showing weather for Tokyo as default.');
+      fetchWeather(35.6762, 139.6503); // Tokyo coordinates
     }
   };
 
