@@ -297,6 +297,6 @@ The Sakura Weather App embodies the Japanese aesthetic of finding beauty in simp
 
 ---
 
-**Made with 🌸 and ❤️ by Rayan Jamshaid (vibe coding and wasting my 6 hours)**
+**Made with 🌸 and ❤️ by Rayan Jamshaid (vibe coding and wasting my 6 hours)** coz i am still unable to run the app in my local machine, i do not know, it has thousands of dependencies, so i kind of now want to make it locally with my own skills
 
 *"Beautiful weather, beautiful moments"* 
