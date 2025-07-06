@@ -300,3 +300,4 @@ The Sakura Weather App embodies the Japanese aesthetic of finding beauty in simp
 **Made with 🌸 and ❤️ by Rayan Jamshaid (vibe coding and wasting my 6 hours)** coz i am still unable to run the app in my local machine, i do not know, it has thousands of dependencies, so i kind of now want to make it locally with my own skills
 
 *"Beautiful weather, beautiful moments"* 
+(just for reference, this webapp was made on 7/6/25, because it was raining, other than that if it was the usual garmi mosam, i would have just broken my laptop
