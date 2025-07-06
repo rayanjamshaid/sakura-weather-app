@@ -31,6 +31,196 @@ body {
   animation: float 6s ease-in-out infinite;
 }
 
+/* Weather Animation Base */
+.weather-animation-layer {
+  z-index: 1;
+}
+
+/* Sunny Animation */
+.sun-animation {
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  width: 100px;
+  height: 100px;
+}
+
+.sun {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(circle, #ffeb3b 0%, #ffc107 100%);
+  border-radius: 50%;
+  animation: sunPulse 3s ease-in-out infinite;
+  box-shadow: 0 0 30px #ffeb3b;
+}
+
+.sun-rays {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, transparent 30%, rgba(255, 235, 59, 0.3) 70%);
+  border-radius: 50%;
+  animation: sunRotate 10s linear infinite;
+}
+
+@keyframes sunPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+@keyframes sunRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Cloudy Animation */
+.cloud-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.cloud {
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0.6;
+  animation: cloudFloat 15s ease-in-out infinite;
+}
+
+.cloud-1 {
+  top: 10%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.cloud-2 {
+  top: 20%;
+  right: 20%;
+  animation-delay: 3s;
+}
+
+.cloud-3 {
+  top: 30%;
+  left: 60%;
+  animation-delay: 6s;
+}
+
+.cloud-4 {
+  top: 15%;
+  left: 40%;
+  animation-delay: 9s;
+}
+
+@keyframes cloudFloat {
+  0%, 100% { transform: translateX(0px) translateY(0px); }
+  25% { transform: translateX(20px) translateY(-10px); }
+  50% { transform: translateX(40px) translateY(0px); }
+  75% { transform: translateX(20px) translateY(10px); }
+}
+
+/* Rainy Animation */
+.rain-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.raindrop {
+  position: absolute;
+  top: -10%;
+  font-size: 1rem;
+  animation: rainFall linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes rainFall {
+  0% {
+    transform: translateY(0px);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(calc(100vh + 100px));
+    opacity: 0;
+  }
+}
+
+/* Snowy Animation */
+.snow-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.snowflake {
+  position: absolute;
+  top: -10%;
+  font-size: 1rem;
+  animation: snowFall linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes snowFall {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(calc(100vh + 100px)) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Stormy Animation */
+.storm-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.lightning {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  width: 4px;
+  height: 200px;
+  background: linear-gradient(to bottom, #ffeb3b, transparent);
+  animation: lightning 4s infinite;
+  opacity: 0;
+}
+
+.storm-rain {
+  position: absolute;
+  top: -10%;
+  font-size: 1.2rem;
+  animation: stormRain 0.8s linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes lightning {
+  0%, 90%, 100% { opacity: 0; }
+  5%, 10% { opacity: 1; }
+}
+
+@keyframes stormRain {
+  0% {
+    transform: translateY(0px);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(calc(100vh + 100px));
+    opacity: 0;
+  }
+}
+
 /* Gradient backgrounds */
 .bg-gradient-to-br {
   background: linear-gradient(135deg, #fce7f3 0%, #fda4af 100%);
@@ -60,17 +250,6 @@ body {
   -webkit-backdrop-filter: blur(12px);
 }
 
-/* Responsive typography */
-@media (max-width: 768px) {
-  .text-5xl {
-    font-size: 2.5rem;
-  }
-  
-  .text-4xl {
-    font-size: 2rem;
-  }
-}
-
 /* Loading animation */
 @keyframes spin {
   from {
@@ -86,13 +265,13 @@ body {
 }
 
 /* Hover effects */
-.hover-lift {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.weather-card {
+  transition: all 0.3s ease;
 }
 
-.hover-lift:hover {
+.weather-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 
 /* Button animations */
@@ -103,41 +282,6 @@ button {
 button:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-}
-
-/* Input focus effects */
-input:focus {
-  transform: scale(1.02);
-  transition: transform 0.2s ease;
-}
-
-/* Weather card animations */
-.weather-card {
-  transition: all 0.3s ease;
-}
-
-.weather-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-}
-
-/* Responsive grid improvements */
-@media (max-width: 640px) {
-  .grid-cols-1 {
-    grid-template-columns: repeat(1, minmax(0, 1fr));
-  }
-}
-
-@media (min-width: 641px) and (max-width: 1023px) {
-  .sm\:grid-cols-2 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (min-width: 1024px) {
-  .lg\:grid-cols-5 {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-  }
 }
 
 /* Custom pink theme colors */
@@ -173,27 +317,8 @@ input:focus {
   background-color: #fdf2f8;
 }
 
-/* Cherry blossom themed elements */
-.cherry-blossom-bg {
-  position: relative;
-  overflow: hidden;
-}
-
-.cherry-blossom-bg::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="20" fill="%23f9a8d4" opacity="0.3">🌸</text></svg>') repeat;
-  background-size: 50px 50px;
-  animation: float 10s ease-in-out infinite;
-  pointer-events: none;
-}
-
-/* Mobile optimizations */
-@media (max-width: 768px) {
+/* Mobile Responsive Improvements */
+@media (max-width: 640px) {
   .container {
     padding-left: 1rem;
     padding-right: 1rem;
@@ -205,5 +330,205 @@ input:focus {
   
   .p-6 {
     padding: 1rem;
+  }
+  
+  .text-5xl {
+    font-size: 2.5rem;
+  }
+  
+  .text-4xl {
+    font-size: 2rem;
+  }
+  
+  .text-3xl {
+    font-size: 1.75rem;
+  }
+  
+  /* Adjust weather animations for mobile */
+  .sun-animation {
+    width: 60px;
+    height: 60px;
+    top: 5%;
+    right: 5%;
+  }
+  
+  .sun {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .sun-rays {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .cloud {
+    font-size: 1.5rem;
+  }
+  
+  .raindrop {
+    font-size: 0.8rem;
+  }
+  
+  .snowflake {
+    font-size: 0.8rem;
+  }
+  
+  .storm-rain {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .text-3xl {
+    font-size: 1.5rem;
+  }
+  
+  .text-2xl {
+    font-size: 1.25rem;
+  }
+  
+  .grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  
+  /* Further adjust animations for small screens */
+  .sun-animation {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .sun {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .sun-rays {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .cloud {
+    font-size: 1.2rem;
+  }
+  
+  .raindrop {
+    font-size: 0.7rem;
+  }
+  
+  .snowflake {
+    font-size: 0.7rem;
+  }
+}
+
+/* Tablet Responsive */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  
+  .sm\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  
+  .sm\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Desktop Responsive */
+@media (min-width: 1024px) {
+  .lg\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  
+  .lg\:grid-cols-5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+/* Enhanced Weather Card Backgrounds */
+.sunny-bg {
+  background: linear-gradient(135deg, #fef3c7 0%, #fcd34d 100%);
+}
+
+.cloudy-bg {
+  background: linear-gradient(135deg, #f3f4f6 0%, #d1d5db 100%);
+}
+
+.rainy-bg {
+  background: linear-gradient(135deg, #e0e7ff 0%, #a5b4fc 100%);
+}
+
+.snowy-bg {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+.stormy-bg {
+  background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
+}
+
+.default-bg {
+  background: linear-gradient(135deg, #fce7f3 0%, #fda4af 100%);
+}
+
+/* Improved touch targets for mobile */
+@media (max-width: 768px) {
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  .weather-card {
+    padding: 1rem;
+  }
+  
+  .forecast-card {
+    padding: 0.75rem;
+  }
+}
+
+/* Performance optimizations */
+.weather-animation-layer * {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .bg-white\/90 {
+    background-color: white;
+  }
+  
+  .text-pink-600 {
+    color: #be185d;
+  }
+  
+  .text-pink-800 {
+    color: #831843;
+  }
+}
+
+/* Print styles */
+@media print {
+  .weather-animation-layer {
+    display: none;
+  }
+  
+  .animate-float {
+    animation: none;
+  }
+  
+  .bg-gradient-to-br {
+    background: white;
   }
 }
